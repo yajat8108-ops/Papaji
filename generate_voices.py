@@ -8,7 +8,7 @@ sys.stdout.reconfigure(encoding='utf-8')
 dialogues = [
     {
         "id": "dialogue_1",
-        "text": "पड़ेगी सिर पे तो हगेगा गिर पे!",
+        "text": "पड़ेगी सिर पे तो हगेगा घर पे!",
         "filename": "audio_dialogue_1.mp3"
     },
     {

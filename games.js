@@ -55,13 +55,13 @@ const quizData = [
   {
     q: "Papaji ki sabse legendary aur immortal line konsi hai?",
     options: [
-      "Padegi sir pai toh hagega gir pai! 😂",
+      "Padegi sir pai toh hagega ghar pai! 😂",
       "Paisa ped pe ugta hai kya?",
       "Kamre ki battiyan kisne khuli chhodi?",
       "Subah 5 baje utho sab theek ho jayega"
     ],
     correct: 0,
-    remark: "SAHI JAWAB! Papaji ka universal gyaan: 'Padegi sir pai toh hagega gir pai!' Iska koi tod nahi hai! 🏆"
+    remark: "SAHI JAWAB! Papaji ka universal gyaan: 'Padegi sir pai toh hagega ghar pai!' Iska koi tod nahi hai! 🏆"
   },
   {
     q: "Aaj ke din Papaji ka sabse accurate official title kya hai?",
