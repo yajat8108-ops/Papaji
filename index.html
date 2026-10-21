@@ -129,20 +129,59 @@
     </p>
 
     <!-- Interactive Black Forest Birthday Cake with "4" and "3" Candles & Cutting Knife -->
-    <div class="cake-container mb-8">
-      <div id="cake-knife" class="cake-knife">🔪</div>
+    <div class="cake-container mb-8" id="cake-container">
+      <div id="cake-knife" class="cake-knife" title="Cake Knife">🔪</div>
       
       <!-- Number Candles (4 and 3) -->
       <div class="candle-number-wrapper">
-        <div class="num-candle" onclick="blowCandles()" title="Click to blow candle 4">
-          4
+        <div class="num-candle" onclick="blowCandles()" title="Click to blow or relight candle 4">
+          <div class="candle-wick"></div>
+          <span class="candle-digit">4</span>
           <div class="flame"></div>
           <div class="smoke"></div>
         </div>
-        <div class="num-candle" onclick="blowCandles()" title="Click to blow candle 3">
-          3
+        <div class="num-candle" onclick="blowCandles()" title="Click to blow or relight candle 3">
+          <div class="candle-wick"></div>
+          <span class="candle-digit">3</span>
           <div class="flame"></div>
           <div class="smoke"></div>
+        </div>
+      </div>
+
+      <!-- Detachable Cut Cake Slice (Slides Out Onto Serving Plate) -->
+      <div id="cake-slice-piece" class="cake-slice-piece" onclick="cutCake()" title="First slice for Papaji! Click to put back & re-cut">
+        <!-- Serving Saucer Plate -->
+        <div class="slice-plate">
+          <div class="slice-plate-rim"></div>
+          <div class="slice-fork">🍴</div>
+        </div>
+        <!-- Sliced Cake Wedge -->
+        <div class="slice-wedge">
+          <!-- Top Tier Wedge -->
+          <div class="wedge-top">
+            <div class="wedge-frosting"></div>
+            <div class="wedge-cherry"></div>
+            <div class="wedge-layers">
+              <span class="w-layer w-cream"></span>
+              <span class="w-layer w-jam"></span>
+              <span class="w-layer w-sponge"></span>
+            </div>
+          </div>
+          <!-- Bottom Tier Wedge -->
+          <div class="wedge-bottom">
+            <div class="wedge-frosting"></div>
+            <div class="wedge-cherry"></div>
+            <div class="wedge-layers">
+              <span class="w-layer w-sponge"></span>
+              <span class="w-layer w-cream"></span>
+              <span class="w-layer w-jam"></span>
+              <span class="w-layer w-sponge"></span>
+            </div>
+          </div>
+        </div>
+        <!-- Floating Slice Badge -->
+        <div class="slice-badge">
+          <span>🍰 First Slice for Papaji! ❤️</span>
         </div>
       </div>
 
@@ -155,6 +194,14 @@
           <div class="cherry"></div>
           <div class="cherry"></div>
         </div>
+        <!-- Internal Cut Cavity Revealed when Sliced -->
+        <div class="cake-cut-cavity top-cavity">
+          <div class="cavity-layers">
+            <span class="c-layer c-cream"></span>
+            <span class="c-layer c-jam"></span>
+            <span class="c-layer c-sponge"></span>
+          </div>
+        </div>
       </div>
 
       <!-- Black Forest Cake Bottom Layer with Chocolate Sponge & Cream -->
@@ -166,6 +213,15 @@
           <div class="cherry"></div>
           <div class="cherry"></div>
           <div class="cherry"></div>
+        </div>
+        <!-- Internal Cut Cavity Revealed when Sliced -->
+        <div class="cake-cut-cavity bottom-cavity">
+          <div class="cavity-layers">
+            <span class="c-layer c-sponge"></span>
+            <span class="c-layer c-cream"></span>
+            <span class="c-layer c-jam"></span>
+            <span class="c-layer c-sponge"></span>
+          </div>
         </div>
       </div>
       <div class="cake-plate"></div>

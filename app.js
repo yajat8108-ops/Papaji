@@ -1,5 +1,12 @@
 // Main Application Logic for Papaji's Birthday Celebration
 
+// Global State Variables
+let isCandlesBlown = false;
+let isCakeCut = false;
+let isAudioPlaying = false;
+let ytPlayer = null;
+let currentDialogueAudio = null;
+
 // Photo Gallery Data with personalized captions and themes
 const galleryPhotos = [
   {
@@ -111,38 +118,63 @@ function toggleTheme() {
   if (window.soundFx) window.soundFx.pop();
 }
 
-// Cake Cutting Feature
-let isCakeCut = false;
+// Cake Cutting & Slicing Feature
 function cutCake() {
+  const container = document.getElementById('cake-container') || document.querySelector('.cake-container');
   const knife = document.getElementById('cake-knife');
   const actionBtn = document.getElementById('cake-cut-btn');
-  if (!knife) return;
+  if (!knife || !container) return;
 
-  knife.classList.add('cutting');
+  // Toggle back if already cut
+  if (isCakeCut) {
+    container.classList.remove('cake-sliced');
+    isCakeCut = false;
+    if (window.soundFx) window.soundFx.pop();
+    if (actionBtn) {
+      actionBtn.innerHTML = "<span>🎂</span> Cut Birthday Cake!";
+      actionBtn.classList.remove('bg-emerald-600', 'from-emerald-500', 'to-emerald-600');
+    }
+    return;
+  }
+
+  // Animate knife slicing down through both tiers
+  knife.classList.remove('slicing');
+  knife.offsetHeight; /* trigger reflow */
+  knife.classList.add('slicing');
   if (window.soundFx) window.soundFx.correct();
 
   setTimeout(() => {
-    knife.classList.remove('cutting');
+    knife.classList.remove('slicing');
+    container.classList.add('cake-sliced');
     isCakeCut = true;
-    if (window.soundFx) window.soundFx.cheer();
-    if (window.confetti) {
-      window.confetti({ particleCount: 140, spread: 90, origin: { y: 0.6 } });
+
+    if (window.soundFx) {
+      window.soundFx.cheer();
     }
-    if (actionBtn) {
-      actionBtn.innerHTML = "🍰 Cake Sliced! Treat for Papaji!";
-      actionBtn.classList.add('bg-emerald-500');
+    if (window.confetti) {
+      window.confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { x: 0.65, y: 0.6 }
+      });
+      setTimeout(() => {
+        window.confetti({ particleCount: 70, spread: 60, origin: { x: 0.7, y: 0.55 } });
+      }, 250);
     }
 
-    // Auto blow candles if still lit
-    if (!isCandlesBlown) {
-      blowCandles();
+    if (actionBtn) {
+      actionBtn.innerHTML = "<span>🍰</span> Sliced for Papaji! (Click to Put Back)";
+      actionBtn.classList.add('from-emerald-500', 'to-emerald-600');
     }
-  }, 700);
+
+    // Auto blow candles if they are still burning!
+    if (!isCandlesBlown) {
+      blowCandles(false);
+    }
+  }, 650);
 }
 
 // Papaji's Soundboard Voice (High-Fidelity Indian Male Hindi AI Voice)
-let currentDialogueAudio = null;
-
 function playDialogue(index, dialogueText, authorTitle) {
   if (window.soundFx) window.soundFx.pop();
 
@@ -283,46 +315,51 @@ function playSynthHappyBirthday() {
   }, (curTime + 0.5) * 1000);
 }
 
-// Cake Candle Blow Action
-function blowCandles() {
-  const cakeContainer = document.querySelector('.cake-container');
+// Cake Candle Blow & Relight Action
+function blowCandles(allowToggle = true) {
+  const cakeContainer = document.getElementById('cake-container') || document.querySelector('.cake-container');
   const actionBtn = document.getElementById('cake-action-btn');
   const flames = document.querySelectorAll('.flame');
   const smokes = document.querySelectorAll('.smoke');
+  const numCandles = document.querySelectorAll('.num-candle');
 
-  if (cakeContainer) {
-    cakeContainer.classList.add('blowing');
-    setTimeout(() => cakeContainer.classList.remove('blowing'), 600);
-  }
-
-  if (isCandlesBlown) {
-    // Relight candles
+  // If already blown and user clicks to relight
+  if (isCandlesBlown && allowToggle) {
     flames.forEach(f => {
       f.classList.remove('extinguished');
       f.style.display = 'block';
       f.style.opacity = '1';
-      f.style.visibility = 'visible';
     });
     smokes.forEach(s => s.style.display = 'none');
+    numCandles.forEach(c => c.classList.remove('candle-unlit'));
     isCandlesBlown = false;
+
     if (actionBtn) actionBtn.innerHTML = "<span>💨</span> Blow 43 Candles!";
     if (window.soundFx) window.soundFx.pop();
     return;
   }
 
-  // Blow out candles
+  // Puff animation on the cake
+  if (cakeContainer) {
+    cakeContainer.classList.add('blowing');
+    setTimeout(() => cakeContainer.classList.remove('blowing'), 600);
+  }
+
+  // Extinguish the flames smoothly
   flames.forEach(f => {
     f.classList.add('extinguished');
-    f.style.display = 'none';
     f.style.opacity = '0';
-    f.style.visibility = 'hidden';
   });
 
+  // Darken candles & show charred wick ember
+  numCandles.forEach(c => c.classList.add('candle-unlit'));
+
+  // Trigger smoke wisps rising
   smokes.forEach(s => {
     s.style.display = 'block';
     s.style.animation = 'none';
     s.offsetHeight; /* trigger reflow */
-    s.style.animation = 'smokeRise 1.4s forwards ease-out';
+    s.style.animation = 'smokeRise 1.5s forwards ease-out';
   });
 
   isCandlesBlown = true;
