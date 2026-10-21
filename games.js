@@ -131,14 +131,14 @@ function renderQuizQuestion() {
     container.innerHTML = `
       <div class="text-center py-6">
         <div class="text-6xl mb-4">🏆</div>
-        <h3 class="text-3xl font-extrabold text-amber-400 mb-2">Quiz Champion!</h3>
-        <p class="text-xl text-slate-200 mb-4">Score: <span class="font-bold text-amber-400">${quizScore} / ${quizData.length}</span></p>
-        <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-5 mb-6 text-slate-200 max-w-lg mx-auto">
+        <h3 class="text-3xl font-black text-sky-950 dark:text-amber-400 mb-2">Quiz Champion!</h3>
+        <p class="text-xl text-sky-900 dark:text-slate-200 mb-4 font-bold">Score: <span class="font-extrabold text-amber-600 dark:text-amber-400">${quizScore} / ${quizData.length}</span></p>
+        <div class="bg-amber-50 dark:bg-amber-500/10 border-2 border-amber-300 dark:border-amber-500/30 rounded-2xl p-5 mb-6 text-sky-950 dark:text-slate-200 max-w-lg mx-auto font-medium">
           ${quizScore === 5 ? 
             "🔥 <strong>Outstanding!</strong> Aap Papaji ke certified No.1 fan ho! Papaji ke har dialogue aur ada ka full gyaan hai aapko!" : 
             "✨ <strong>Kamaal kar diya!</strong> Papaji ki sabhi baatein aur 19 saal ka pyaar hamesha dil me taza hai!"}
         </div>
-        <button onclick="initQuiz()" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-xl transition shadow-lg shadow-amber-500/30">
+        <button onclick="initQuiz()" class="px-8 py-3.5 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 text-white font-extrabold rounded-xl transition shadow-lg shadow-sky-500/30">
           Play Again 🔄
         </button>
       </div>
@@ -148,16 +148,16 @@ function renderQuizQuestion() {
 
   const qObj = quizData[currentQuizIdx];
   container.innerHTML = `
-    <div class="mb-4 flex items-center justify-between text-sm text-slate-400 border-b border-slate-700/60 pb-3">
-      <span class="font-semibold text-amber-400">Question ${currentQuizIdx + 1} of ${quizData.length}</span>
-      <span class="bg-slate-800 px-3 py-1 rounded-full text-slate-300">Score: ${quizScore}</span>
+    <div class="mb-4 flex items-center justify-between text-sm text-sky-800 dark:text-slate-400 border-b border-sky-200 dark:border-slate-700/60 pb-3">
+      <span class="font-extrabold text-amber-600 dark:text-amber-400">Question ${currentQuizIdx + 1} of ${quizData.length}</span>
+      <span class="bg-sky-100 dark:bg-slate-800 border border-sky-300 dark:border-slate-700 px-3 py-1 rounded-full text-sky-950 dark:text-slate-200 font-bold">Score: ${quizScore}</span>
     </div>
-    <h3 class="text-xl md:text-2xl font-bold text-white mb-6 leading-snug">${qObj.q}</h3>
+    <h3 class="text-xl md:text-2xl font-black text-sky-950 dark:text-white mb-6 leading-snug">${qObj.q}</h3>
     <div class="space-y-3 mb-6" id="quiz-options-group">
       ${qObj.options.map((opt, i) => `
-        <button onclick="handleQuizAnswer(${i})" class="quiz-btn w-full text-left p-4 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 hover:border-amber-400/50 text-slate-100 font-medium transition flex items-center gap-3">
-          <span class="w-8 h-8 rounded-full bg-slate-700 text-amber-400 font-bold flex items-center justify-center text-sm shrink-0">${String.fromCharCode(65 + i)}</span>
-          <span>${opt}</span>
+        <button onclick="handleQuizAnswer(${i})" class="quiz-btn w-full text-left p-4 rounded-xl bg-white dark:bg-slate-800/90 hover:bg-sky-50 dark:hover:bg-slate-700/80 border-2 border-sky-200 dark:border-slate-700 hover:border-amber-400 text-sky-950 dark:text-slate-100 font-semibold transition flex items-center gap-3.5 shadow-sm">
+          <span class="w-8 h-8 rounded-full bg-sky-100 dark:bg-slate-700 text-sky-900 dark:text-amber-400 font-black flex items-center justify-center text-sm shrink-0 border border-sky-300 dark:border-slate-600">${String.fromCharCode(65 + i)}</span>
+          <span class="leading-snug">${opt}</span>
         </button>
       `).join('')}
     </div>
@@ -174,17 +174,17 @@ function handleQuizAnswer(selectedIdx) {
   if (selectedIdx === qObj.correct) {
     quizScore++;
     soundFx.correct();
-    buttons[selectedIdx].classList.remove('bg-slate-800/80', 'border-slate-700');
-    buttons[selectedIdx].classList.add('bg-emerald-600/30', 'border-emerald-500', 'text-emerald-300');
-    feedback.className = 'rounded-xl p-4 text-sm font-medium bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 mb-4';
+    buttons[selectedIdx].classList.remove('bg-white', 'dark:bg-slate-800/90', 'border-sky-200', 'dark:border-slate-700');
+    buttons[selectedIdx].classList.add('bg-emerald-100', 'dark:bg-emerald-600/30', 'border-emerald-500', 'text-emerald-950', 'dark:text-emerald-300');
+    feedback.className = 'rounded-xl p-4 text-sm font-bold bg-emerald-100 dark:bg-emerald-500/20 text-emerald-950 dark:text-emerald-300 border-2 border-emerald-400 dark:border-emerald-500/40 mb-4';
     feedback.innerHTML = `✅ ${qObj.remark}`;
   } else {
     soundFx.wrong();
-    buttons[selectedIdx].classList.remove('bg-slate-800/80', 'border-slate-700');
-    buttons[selectedIdx].classList.add('bg-rose-600/30', 'border-rose-500', 'text-rose-300');
-    buttons[qObj.correct].classList.remove('bg-slate-800/80', 'border-slate-700');
-    buttons[qObj.correct].classList.add('bg-emerald-600/30', 'border-emerald-500', 'text-emerald-300');
-    feedback.className = 'rounded-xl p-4 text-sm font-medium bg-amber-500/20 text-amber-300 border border-amber-500/40 mb-4';
+    buttons[selectedIdx].classList.remove('bg-white', 'dark:bg-slate-800/90', 'border-sky-200', 'dark:border-slate-700');
+    buttons[selectedIdx].classList.add('bg-rose-100', 'dark:bg-rose-600/30', 'border-rose-500', 'text-rose-950', 'dark:text-rose-300');
+    buttons[qObj.correct].classList.remove('bg-white', 'dark:bg-slate-800/90', 'border-sky-200', 'dark:border-slate-700');
+    buttons[qObj.correct].classList.add('bg-emerald-100', 'dark:bg-emerald-600/30', 'border-emerald-500', 'text-emerald-950', 'dark:text-emerald-300');
+    feedback.className = 'rounded-xl p-4 text-sm font-bold bg-amber-100 dark:bg-amber-500/20 text-amber-950 dark:text-amber-300 border-2 border-amber-400 dark:border-amber-500/40 mb-4';
     feedback.innerHTML = `💡 Sahi jawab: <strong>${qObj.options[qObj.correct]}</strong><br>${qObj.remark}`;
   }
   feedback.classList.remove('hidden');
@@ -645,11 +645,11 @@ function spinWheel() {
     const resultBox = document.getElementById('wheel-result');
     if (resultBox) {
       resultBox.innerHTML = `
-        <div class="p-4 bg-amber-500/20 border border-amber-500/50 rounded-xl text-center shadow-lg">
-          <span class="text-xs uppercase tracking-wider text-amber-300 font-bold block mb-1">Papaji Won Coupon:</span>
-          <p class="text-2xl font-black text-white">${wonSlice.icon} ${wonSlice.title}</p>
-          <p class="text-xs text-amber-200 mt-1 font-semibold">${wonSlice.sub}</p>
-          <p class="text-[11px] text-slate-300 mt-2">🎉 Valid starting right now! Son is on duty!</p>
+        <div class="p-4 bg-amber-100 dark:bg-amber-500/20 border-2 border-amber-400 dark:border-amber-500/50 rounded-2xl text-center shadow-lg">
+          <span class="text-xs uppercase tracking-wider text-amber-800 dark:text-amber-300 font-extrabold block mb-1">Papaji Won Coupon:</span>
+          <p class="text-2xl font-black text-sky-950 dark:text-white">${wonSlice.icon} ${wonSlice.title}</p>
+          <p class="text-xs text-amber-900 dark:text-amber-200 mt-1 font-bold">${wonSlice.sub}</p>
+          <p class="text-[11px] text-sky-800 dark:text-slate-300 mt-2 font-semibold">🎉 Valid starting right now! Son is on duty!</p>
         </div>
       `;
     }
