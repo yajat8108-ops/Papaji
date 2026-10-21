@@ -54,8 +54,8 @@
   <!-- Poppable Floating Balloons Container -->
   <div id="balloon-container" class="balloon-container"></div>
 
-  <!-- Hidden YouTube Player Container -->
-  <div id="yt-audio-player" class="hidden"></div>
+  <!-- Hidden YouTube Player Container (Hardware Active for Background Autoplay) -->
+  <div id="yt-audio-player" style="position: fixed; top: -9999px; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;" aria-hidden="true"></div>
 
   <!-- Navigation Bar (Mobile-Coded Responsive App Bar) -->
   <header class="sticky top-0 z-40 backdrop-blur-md bg-white/90 dark:bg-slate-950/90 border-b border-sky-200 dark:border-sky-900/40 px-3 sm:px-4 py-2.5 shadow-sm transition-colors">

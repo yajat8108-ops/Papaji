@@ -216,14 +216,16 @@ function playDialogue(index, dialogueText, authorTitle) {
 // YouTube Audio Controller for "Happy Birthday To U Ji" - Krsna Solo / Mimi Teddy
 function onYouTubeIframeAPIReady() {
   ytPlayer = new YT.Player('yt-audio-player', {
-    height: '0',
-    width: '0',
+    height: '1',
+    width: '1',
     videoId: 'K2aJTT29ZdU',
     playerVars: {
-      autoplay: 0,
+      autoplay: 1,
       loop: 1,
       playlist: 'K2aJTT29ZdU',
-      playsinline: 1
+      playsinline: 1,
+      enablejsapi: 1,
+      origin: window.location.origin
     },
     events: {
       onReady: onPlayerReady,
@@ -235,6 +237,33 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady(event) {
   const toggleBtn = document.getElementById('audio-toggle-btn');
   if (toggleBtn) toggleBtn.disabled = false;
+
+  // Direct autoplay attempt when player is ready
+  try {
+    event.target.playVideo();
+  } catch(e) {}
+}
+
+// Autoplay unlock on first user gesture (ensures playback on mobile Safari, Chrome, Edge)
+function setupAutoplayGesture() {
+  const triggerAutoplay = () => {
+    if (!isAudioPlaying && ytPlayer && ytPlayer.playVideo) {
+      try {
+        ytPlayer.playVideo();
+      } catch(e) {}
+    }
+    // Also resume Web Audio context if suspended
+    if (window.soundFx && window.soundFx.ctx && window.soundFx.ctx.state === 'suspended') {
+      window.soundFx.ctx.resume();
+    }
+    ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll'].forEach(evt => {
+      window.removeEventListener(evt, triggerAutoplay, { capture: true });
+    });
+  };
+
+  ['click', 'touchstart', 'pointerdown', 'keydown', 'scroll'].forEach(evt => {
+    window.addEventListener(evt, triggerAutoplay, { capture: true, once: true });
+  });
 }
 
 function onPlayerStateChange(event) {
@@ -833,6 +862,7 @@ window.addEventListener('DOMContentLoaded', () => {
   spawnBalloons();
   runEndlessTypewriter();
   initMobileScrollSpy();
+  setupAutoplayGesture();
 
   // Set today's date on certificate
   const certDate = document.getElementById('cert-today-date');
