@@ -1,0 +1,907 @@
+/* Papa's Birthday Celebration - Premium Sky Blue Glassmorphism Styles */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;0,900;1,600&display=swap');
+
+:root {
+  --sky-50: #f0f9ff;
+  --sky-100: #e0f2fe;
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
+  --sky-400: #38bdf8;
+  --sky-500: #0ea5e9;
+  --sky-600: #0284c7;
+  --sky-700: #0369a1;
+  --sky-800: #075985;
+  --sky-900: #0c4a6e;
+  
+  --primary-gold: #f59e0b;
+  --primary-amber: #d97706;
+  --font-main: 'Outfit', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-handwriting: 'Caveat', cursive;
+
+  /* Default Sky Blue Light Mode Variables */
+  --bg-main: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 35%, #f0f9ff 70%, #ffffff 100%);
+  --text-main: #0c4a6e;
+  --text-muted: #334155;
+}
+
+body.dark {
+  --bg-main: linear-gradient(180deg, #071326 0%, #0c1c38 40%, #030a17 100%);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-main);
+  background-attachment: fixed;
+  color: var(--text-main);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  user-select: none;
+  min-height: 100vh;
+  transition: background 0.5s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(224, 242, 254, 0.6);
+}
+body.dark ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #0284c7;
+  border-radius: 5px;
+}
+
+/* =========================================
+   AUTHENTIC GLASSMORPHISM ORBS & BACKDROP
+   ========================================= */
+.glass-orbs-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glass-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.55;
+  animation: floatOrb 24s ease-in-out infinite alternate;
+}
+
+body.dark .glass-orb {
+  opacity: 0.25;
+  filter: blur(100px);
+}
+
+.orb-1 {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #38bdf8 0%, rgba(14, 165, 233, 0) 70%);
+  top: -60px;
+  left: 5%;
+  animation-duration: 22s;
+}
+
+.orb-2 {
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, #fbbf24 0%, rgba(245, 158, 11, 0) 70%);
+  top: 32%;
+  right: -90px;
+  animation-duration: 28s;
+}
+
+.orb-3 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, #7dd3fc 0%, rgba(2, 132, 199, 0) 70%);
+  bottom: 8%;
+  left: -40px;
+  animation-duration: 25s;
+}
+
+.orb-4 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #f43f5e 0%, rgba(244, 63, 94, 0) 70%);
+  bottom: 35%;
+  left: 45%;
+  opacity: 0.28;
+  animation-duration: 30s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(45px, -55px) scale(1.08); }
+  100% { transform: translate(-35px, 40px) scale(0.95); }
+}
+
+/* Master Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 28px;
+  box-shadow: 
+    0 20px 45px rgba(2, 132, 199, 0.1),
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(2, 132, 199, 0.05);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  box-shadow: 
+    0 28px 60px rgba(2, 132, 199, 0.16),
+    inset 0 1.5px 2px rgba(255, 255, 255, 1);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+body.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.68);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1.5px 2px rgba(255, 255, 255, 0.15);
+}
+
+body.dark .glass-panel:hover {
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), inset 0 1.5px 2px rgba(56, 189, 248, 0.25);
+}
+
+/* Glass Pill Badge */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 15px rgba(2, 132, 199, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+body.dark .glass-pill {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Floating Balloons */
+.balloon-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 15;
+  overflow: hidden;
+}
+
+.floating-balloon {
+  position: absolute;
+  bottom: -120px;
+  width: 52px;
+  height: 68px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: floatUp 14s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset -5px -5px 12px rgba(0,0,0,0.18), 0 8px 20px rgba(2, 132, 199, 0.25);
+}
+
+.floating-balloon::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 16px;
+  background: rgba(14, 165, 233, 0.5);
+}
+
+.floating-balloon:hover {
+  transform: scale(1.18);
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+  50% { transform: translateY(-55vh) rotate(10deg); }
+  100% { transform: translateY(-120vh) rotate(-10deg); opacity: 0.15; }
+}
+
+/* =========================================
+   ENDLESS TYPEWRITER HERO CONTAINER
+   ========================================= */
+.typing-hero-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  max-width: 840px;
+  padding: 18px 24px;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 25px 60px rgba(2, 132, 199, 0.14),
+    inset 0 2px 2px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(2, 132, 199, 0.06);
+  transition: all 0.35s ease;
+}
+
+body.dark .typing-hero-container {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+.typing-hero-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 32px 75px rgba(2, 132, 199, 0.22);
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 4px;
+  height: 1.1em;
+  background-color: #f59e0b;
+  margin-left: 6px;
+  vertical-align: middle;
+  border-radius: 2px;
+  animation: blinkCursor 0.75s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* =========================================
+   REALISTIC BLACK FOREST BIRTHDAY CAKE
+   ========================================= */
+.cake-container {
+  position: relative;
+  width: 310px;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.cake-plate {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 330px;
+  height: 26px;
+  background: radial-gradient(ellipse at center, #ffffff 0%, #e2e8f0 55%, #94a3b8 100%);
+  border-radius: 50%;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+  border: 2px solid #cbd5e1;
+}
+
+.cake-layer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 14px;
+}
+
+/* Dark Rich Chocolate Sponge with Cocoa Texture */
+.cake-bottom {
+  bottom: 18px;
+  width: 260px;
+  height: 90px;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #3d1c0a 0%, #261105 45%, #170903 100%);
+  border: 3px solid #4a220c;
+  box-shadow: inset 0 -12px 20px rgba(0,0,0,0.6), 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.cake-top {
+  bottom: 102px;
+  width: 190px;
+  height: 72px;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #441f0c 0%, #2c1407 45%, #1a0a03 100%);
+  border: 3px solid #54280f;
+  box-shadow: inset 0 -8px 15px rgba(0,0,0,0.5), 0 8px 25px rgba(0,0,0,0.35);
+}
+
+/* Whipped Cream & Chocolate Flakes */
+.cake-frosting {
+  position: absolute;
+  top: -14px;
+  left: -4px;
+  right: -4px;
+  height: 26px;
+  background: #ffffff;
+  border-radius: 16px 16px 12px 12px;
+  box-shadow: 0 5px 12px rgba(0,0,0,0.25), inset 0 2px 4px rgba(255,255,255,0.9);
+  /* Chocolate Curls & Sprinkles Effect */
+  background-image: 
+    radial-gradient(#261105 20%, transparent 25%),
+    radial-gradient(#3d1c0a 20%, transparent 25%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+}
+
+/* Ruby Glazed Cherries 🍒 along the tiers */
+.cherry-row {
+  position: absolute;
+  top: -18px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 0 10px;
+  pointer-events: none;
+}
+
+.cherry {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 35% 35%, #ff4d6d 0%, #c9184a 55%, #590d22 100%);
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.4), inset 1px 1px 2px rgba(255,255,255,0.6);
+  position: relative;
+}
+
+.cherry::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 1.5px;
+  height: 7px;
+  background: #15803d;
+  transform: rotate(20deg);
+  border-radius: 2px;
+}
+
+/* Number Candles (4 and 3) */
+.candle-number-wrapper {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 28px;
+  z-index: 10;
+}
+
+.num-candle {
+  position: relative;
+  width: 42px;
+  height: 56px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  border: 3px solid #fef08a;
+  border-radius: 12px;
+  color: #ffffff;
+  font-family: var(--font-main);
+  font-size: 34px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.num-candle:hover {
+  transform: scale(1.14);
+}
+
+.flame {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 27px;
+  background: radial-gradient(ellipse at bottom, #fff 0%, #fbbf24 40%, #ef4444 80%, transparent 100%);
+  border-radius: 50% 50% 35% 35%;
+  animation: flicker 0.6s infinite alternate ease-in-out;
+  box-shadow: 0 0 22px #f59e0b, 0 0 40px #f59e0b;
+  transform-origin: center bottom;
+}
+
+.flame.extinguished {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.cake-container.blowing {
+  animation: windPuff 0.6s ease-out;
+}
+
+@keyframes windPuff {
+  0% { transform: scale(1); filter: brightness(1); }
+  40% { transform: scale(0.98) skewX(3deg); filter: brightness(1.15); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+.smoke {
+  position: absolute;
+  top: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 20px;
+  background: rgba(148, 163, 184, 0.7);
+  filter: blur(3px);
+  border-radius: 50%;
+  animation: smokeRise 1.4s forwards ease-out;
+  display: none;
+}
+
+@keyframes flicker {
+  0% { transform: translateX(-50%) rotate(-3deg) scale(1); }
+  50% { transform: translateX(-48%) rotate(2deg) scale(1.08); }
+  100% { transform: translateX(-52%) rotate(-2deg) scale(0.96); }
+}
+
+@keyframes smokeRise {
+  0% { opacity: 0.8; transform: translate(-50%, 0) scale(1); }
+  100% { opacity: 0; transform: translate(-70%, -40px) scale(3.5); }
+}
+
+/* Cake Cutting Knife Animation */
+.cake-knife {
+  position: absolute;
+  top: -60px;
+  right: 10px;
+  font-size: 52px;
+  transform: rotate(-45deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cake-knife.cutting {
+  opacity: 1;
+  top: 50px;
+  right: 80px;
+  transform: rotate(15deg) scale(1.2);
+}
+
+/* =========================================
+   GRAND CELEBRATE BANNER MODAL
+   ========================================= */
+.celebrate-banner-card {
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.95) 0%, rgba(240, 249, 255, 0.92) 100%);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 3px solid #38bdf8;
+  border-radius: 36px;
+  box-shadow: 
+    0 30px 80px rgba(2, 132, 199, 0.35),
+    0 0 50px rgba(56, 189, 248, 0.3),
+    inset 0 2px 3px rgba(255, 255, 255, 1);
+  animation: bannerDrop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body.dark .celebrate-banner-card {
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.95) 0%, rgba(8, 47, 73, 0.92) 100%);
+  border-color: #38bdf8;
+  box-shadow: 0 35px 85px rgba(0, 0, 0, 0.8), 0 0 50px rgba(56, 189, 248, 0.4);
+}
+
+@keyframes bannerDrop {
+  0% { transform: translateY(-70px) scale(0.85); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* Vintage Wax Sealed Envelope */
+.wax-envelope {
+  position: relative;
+  background: linear-gradient(135deg, rgba(3, 105, 161, 0.88) 0%, rgba(7, 89, 133, 0.92) 100%);
+  backdrop-filter: blur(24px);
+  border-radius: 24px;
+  box-shadow: 0 20px 45px rgba(2, 132, 199, 0.25), inset 0 0 15px rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wax-envelope:hover {
+  transform: translateY(-5px);
+  border-color: #f59e0b;
+  box-shadow: 0 25px 50px rgba(245, 158, 11, 0.35);
+}
+
+.wax-seal-btn {
+  width: 82px;
+  height: 82px;
+  background: radial-gradient(circle at 35% 35%, #f59e0b 0%, #b45309 75%, #78350f 100%);
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35), inset 2px 2px 6px rgba(255,255,255,0.4), inset -3px -3px 8px rgba(0,0,0,0.6);
+  border: 3px solid #fef08a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 28px;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.wax-seal-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.letter-parchment {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px);
+  color: #0c4a6e;
+  font-family: 'Georgia', serif;
+  box-shadow: 0 20px 45px rgba(2, 132, 199, 0.15), inset 0 0 35px rgba(56, 189, 248, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  position: relative;
+}
+
+.letter-parchment::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1.5px dashed rgba(14, 165, 233, 0.35);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.handwriting-font {
+  font-family: var(--font-handwriting);
+  font-size: 1.85rem;
+  line-height: 1.5;
+  color: #0369a1;
+}
+
+/* Polaroid Photo Styling */
+.polaroid-card {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  color: #0f172a;
+  padding: 14px 14px 22px 14px;
+  box-shadow: 0 16px 35px rgba(2, 132, 199, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  position: relative;
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+  transform: rotate(var(--rot, 0deg));
+}
+
+.polaroid-card:hover {
+  transform: scale(1.06) rotate(0deg) translateY(-8px) !important;
+  z-index: 20;
+  box-shadow: 0 25px 50px rgba(14, 165, 233, 0.3);
+  border-color: #38bdf8;
+  background: #ffffff;
+}
+
+.polaroid-tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 24px;
+  background: rgba(186, 230, 253, 0.85);
+  backdrop-filter: blur(4px);
+  border-left: 2px dashed rgba(2, 132, 199, 0.4);
+  border-right: 2px dashed rgba(2, 132, 199, 0.4);
+  z-index: 5;
+}
+
+.polaroid-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 6px;
+  filter: contrast(1.04) saturate(1.05);
+}
+
+.polaroid-caption {
+  font-family: var(--font-handwriting);
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-top: 12px;
+  text-align: center;
+  color: #0369a1;
+  line-height: 1.25;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  backdrop-filter: blur(20px);
+  background: rgba(8, 47, 73, 0.85);
+}
+
+/* Wheel of Privileges */
+.wheel-container {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+}
+
+@media(min-width: 640px) {
+  .wheel-container {
+    width: 380px;
+    height: 380px;
+  }
+}
+
+.wheel-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 45px rgba(14, 165, 233, 0.35), inset 0 0 15px rgba(0,0,0,0.4);
+  border: 6px solid #38bdf8;
+  transition: transform 4.5s cubic-bezier(0.15, 0.9, 0.2, 1);
+}
+
+.wheel-pointer {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 34px solid #ef4444;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+  z-index: 10;
+}
+
+/* Memory Match Cards */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.memory-card {
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.memory-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  border-radius: 14px;
+  box-shadow: 0 8px 18px rgba(2, 132, 199, 0.2);
+}
+
+.memory-card.flipped .memory-card-inner,
+.memory-card.matched .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card-front, .memory-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.memory-card-back {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+  border: 2px solid #7dd3fc;
+  color: #ffffff;
+  font-size: 1.75rem;
+}
+
+.memory-card-front {
+  background: #ffffff;
+  transform: rotateY(180deg);
+  border: 2px solid #10b981;
+}
+
+.memory-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Soundboard Button Card (Glass) */
+.soundboard-btn {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 18px 16px;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  cursor: pointer;
+}
+
+.soundboard-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: #38bdf8;
+  box-shadow: 0 15px 30px rgba(14, 165, 233, 0.22);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.soundboard-btn:active {
+  transform: scale(0.96);
+}
+
+body.dark .soundboard-btn {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #f8fafc;
+}
+
+body.dark .soundboard-btn:hover {
+  border-color: #38bdf8;
+  background: rgba(15, 23, 42, 0.85);
+}
+
+/* Best Dad Certificate (Glass Gold Frame) */
+.certificate-frame {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(28px);
+  color: #0c4a6e;
+  border: 12px solid #0284c7;
+  border-image: linear-gradient(to right, #0284c7, #38bdf8, #f59e0b, #0284c7) 1;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(2, 132, 199, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+.certificate-inner {
+  border: 3px double #0284c7;
+  padding: 2.5rem 1.5rem;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.95) 0%, rgba(224, 242, 254, 0.5) 100%);
+  border-radius: 18px;
+}
+
+/* Floating Audio Player (Glass Pill) */
+.audio-bar {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 50;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 12px 35px rgba(2, 132, 199, 0.22), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  border-radius: 9999px;
+  padding: 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+body.dark .audio-bar {
+  background: rgba(15, 23, 42, 0.82);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Equalizer Visualizer */
+.eq-bar {
+  width: 3px;
+  background: #0284c7;
+  border-radius: 2px;
+  animation: eqJump 0.8s infinite ease-in-out alternate;
+}
+.eq-bar:nth-child(1) { height: 16px; animation-delay: 0.1s; }
+.eq-bar:nth-child(2) { height: 24px; animation-delay: 0.3s; }
+.eq-bar:nth-child(3) { height: 12px; animation-delay: 0.2s; }
+.eq-bar:nth-child(4) { height: 20px; animation-delay: 0.4s; }
+
+@keyframes eqJump {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+.paused .eq-bar {
+  animation-play-state: paused;
+  transform: scaleY(0.3);
+}
+
+/* Pulse Animations */
+.pulse-sky {
+  animation: pulseSky 2s infinite;
+}
+
+@keyframes pulseSky {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.6); }
+  50% { box-shadow: 0 0 0 14px rgba(14, 165, 233, 0); }
+}
+
+/* Easter Egg Modal & Level 43 Glow */
+.easter-egg-card {
+  background: radial-gradient(circle at top, #0284c7 0%, #082f49 100%);
+  border: 4px solid #38bdf8;
+  box-shadow: 0 0 50px rgba(14, 165, 233, 0.6), 0 25px 60px rgba(0,0,0,0.8);
+  animation: eggPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes eggPop {
+  0% { transform: scale(0.6) rotate(-5deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+.level-43-badge {
+  background: linear-gradient(135deg, #0284c7 0%, #f59e0b 100%);
+  box-shadow: 0 0 25px rgba(14, 165, 233, 0.5);
+  animation: badgeGlow 2s infinite alternate;
+}
+
+@keyframes badgeGlow {
+  0% { box-shadow: 0 0 15px rgba(14, 165, 233, 0.4); }
+  100% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.8); }
+}
+
+/* Print Styles for Certificate */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #certificate-section, #certificate-section * {
+    visibility: visible;
+  }
+  #certificate-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
