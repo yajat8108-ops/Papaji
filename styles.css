@@ -827,9 +827,92 @@ body.dark .typing-hero-container {
   100% { transform: translateX(-50%) translateY(-4px); }
 }
 
+/* Safe area padding for mobile notches and gesture bars */
+.safe-bottom {
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Hide scrollbars for smooth horizontal thumb scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 76px; /* Space for the bottom navigation dock */
+  }
+
+  .audio-bar {
+    bottom: 72px;
+    right: 12px;
+    transform: scale(0.88);
+    transform-origin: bottom right;
+  }
+}
+
+@media (max-width: 640px) {
+  .cake-container {
+    width: 275px;
+    height: 230px;
+    margin: 0 auto;
+  }
+  
+  .cake-plate {
+    width: 290px;
+  }
+
+  .cake-bottom {
+    width: 230px;
+    height: 80px;
+    bottom: 16px;
+  }
+
+  .cake-top {
+    width: 170px;
+    height: 65px;
+    bottom: 92px;
+  }
+
+  .candle-number-wrapper {
+    top: 18px;
+    gap: 20px;
+  }
+
+  .num-candle {
+    width: 38px;
+    height: 52px;
+    font-size: 28px;
+  }
+
+  .cake-slice-piece {
+    top: 65px;
+    right: 10px;
+    width: 82px;
+    height: 140px;
+  }
+
+  .cake-container.cake-sliced .cake-slice-piece {
+    transform: translate(44px, 14px) rotate(6deg) scale(0.9);
+  }
+
+  .cake-knife {
+    right: 20px;
+    font-size: 42px;
+  }
+}
+
 @media (max-width: 480px) {
   .cake-container.cake-sliced .cake-slice-piece {
-    transform: translate(50px, 20px) rotate(6deg) scale(0.92);
+    transform: translate(38px, 16px) rotate(5deg) scale(0.85);
+  }
+
+  .wheel-container {
+    width: 280px !important;
+    height: 280px !important;
   }
 }
 

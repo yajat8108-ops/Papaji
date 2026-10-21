@@ -257,12 +257,36 @@ class CatchGame {
       if (this.isRunning) handleMove(e.clientX);
     });
 
+    this.canvas.addEventListener('touchstart', (e) => {
+      if (this.isRunning && e.touches.length > 0) {
+        handleMove(e.touches[0].clientX);
+      }
+    }, { passive: true });
+
     this.canvas.addEventListener('touchmove', (e) => {
       if (this.isRunning && e.touches.length > 0) {
         e.preventDefault();
         handleMove(e.touches[0].clientX);
       }
     }, { passive: false });
+
+    // Mobile On-Screen Direction Buttons
+    const btnLeft = document.getElementById('btn-touch-left');
+    const btnRight = document.getElementById('btn-touch-right');
+    if (btnLeft) {
+      btnLeft.addEventListener('touchstart', (e) => { e.preventDefault(); this.keys.left = true; }, { passive: false });
+      btnLeft.addEventListener('touchend', (e) => { e.preventDefault(); this.keys.left = false; }, { passive: false });
+      btnLeft.addEventListener('mousedown', () => { this.keys.left = true; });
+      btnLeft.addEventListener('mouseup', () => { this.keys.left = false; });
+      btnLeft.addEventListener('mouseleave', () => { this.keys.left = false; });
+    }
+    if (btnRight) {
+      btnRight.addEventListener('touchstart', (e) => { e.preventDefault(); this.keys.right = true; }, { passive: false });
+      btnRight.addEventListener('touchend', (e) => { e.preventDefault(); this.keys.right = false; }, { passive: false });
+      btnRight.addEventListener('mousedown', () => { this.keys.right = true; });
+      btnRight.addEventListener('mouseup', () => { this.keys.right = false; });
+      btnRight.addEventListener('mouseleave', () => { this.keys.right = false; });
+    }
   }
 
   start() {

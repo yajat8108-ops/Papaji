@@ -792,11 +792,47 @@ function replayTyping() {
   runEndlessTypewriter();
 }
 
+// Mobile Bottom Navigation Dock Scroll-Spy
+function initMobileScrollSpy() {
+  const sections = ['hero-cake', 'soundboard-section', 'letter-section', 'gallery-section', 'games-section'];
+  const navLinks = document.querySelectorAll('.mobile-nav-item');
+  if (!navLinks.length) return;
+
+  const updateSpy = () => {
+    let current = 'hero-cake';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.offsetTop - 180;
+        if (window.scrollY >= top) {
+          current = id;
+        }
+      }
+    });
+
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const targetId = href.substring(1);
+        if (targetId === current) {
+          link.classList.add('text-sky-600', 'dark:text-amber-400', 'bg-sky-100/90', 'dark:bg-slate-800');
+        } else {
+          link.classList.remove('text-sky-600', 'dark:text-amber-400', 'bg-sky-100/90', 'dark:bg-slate-800');
+        }
+      }
+    });
+  };
+
+  window.addEventListener('scroll', updateSpy, { passive: true });
+  updateSpy();
+}
+
 // Initialize on load
 window.addEventListener('DOMContentLoaded', () => {
   renderGallery('all');
   spawnBalloons();
   runEndlessTypewriter();
+  initMobileScrollSpy();
 
   // Set today's date on certificate
   const certDate = document.getElementById('cert-today-date');
